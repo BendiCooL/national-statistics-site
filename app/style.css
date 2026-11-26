@@ -1,0 +1,239 @@
+/* NusaData — gaya portal statistik. Satu file, tanpa font eksternal. */
+:root {
+  --navy: #0c2d48;
+  --teal: #0f766e;
+  --teal-dark: #0b5e57;
+  --amber: #b45309;
+  --amber-soft: #fef3c7;
+  --ink: #1f2937;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --card: #ffffff;
+  --bg: #f4f6f8;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.55;
+}
+
+a { color: var(--teal); }
+
+/* Kepala situs */
+.site-head {
+  background: var(--navy);
+  color: #fff;
+  padding: 18px 0 0;
+}
+.head-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.logo-mark { flex: 0 0 auto; }
+.site-title { font-size: 26px; margin: 0; letter-spacing: 0.2px; }
+.site-title span { color: #fbbf24; }
+.site-tag { margin: 2px 0 0; color: #cbd5e1; font-size: 14px; }
+.head-note {
+  margin-left: auto;
+  font-size: 13px;
+  color: #cbd5e1;
+  border: 1px solid #33506b;
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+
+/* Navigasi */
+.site-nav {
+  margin-top: 16px;
+  background: rgba(255, 255, 255, 0.08);
+}
+.site-nav ul {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+  list-style: none;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.site-nav a {
+  display: block;
+  padding: 11px 14px;
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  border-bottom: 3px solid transparent;
+}
+.site-nav a:hover { color: #fff; background: rgba(255, 255, 255, 0.06); }
+.site-nav a.active { color: #fff; border-bottom-color: #fbbf24; }
+
+/* Isi */
+.page { max-width: 1080px; margin: 0 auto; padding: 28px 20px 40px; }
+.page h1 { font-size: 28px; margin: 0 0 6px; color: var(--navy); }
+.lede { font-size: 17px; color: #374151; max-width: 72ch; margin: 0 0 22px; }
+.page h2 { font-size: 21px; color: var(--navy); margin: 30px 0 10px; }
+.page h3 { font-size: 17px; color: var(--navy); margin: 0 0 8px; }
+.source-note { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+
+/* Kartu indikator */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 18px;
+}
+.controls label { font-weight: 600; }
+.controls select, .controls input[type="search"] {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+}
+.btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--teal);
+  background: #fff;
+  color: var(--teal-dark);
+  cursor: pointer;
+}
+.btn[aria-pressed="true"] { background: var(--teal); color: #fff; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+.card .k-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--muted); }
+.card .k-value { font-size: 32px; font-weight: 800; color: var(--navy); margin: 4px 0 0; }
+.card .k-unit { font-size: 14px; color: var(--muted); font-weight: 600; }
+.card .k-source { font-size: 12.5px; color: var(--muted); margin: 8px 0 0; }
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-top: 16px;
+}
+.panel p { margin: 0 0 10px; }
+.chart-wrap { margin-top: 6px; }
+
+/* Daftar jelajah */
+.explore {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+.explore a {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.explore a:hover { border-color: var(--teal); }
+.explore strong { display: block; font-size: 16px; color: var(--navy); }
+.explore span { font-size: 14px; color: var(--muted); }
+
+/* Tabel provinsi */
+.table-wrap { overflow-x: auto; }
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+table.data th, table.data td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+table.data th { background: #f8fafc; color: var(--navy); }
+table.data th button {
+  font: inherit;
+  font-weight: 700;
+  color: var(--navy);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+table.data td.num, table.data th.num { text-align: right; }
+table.data tr:hover td { background: #f8fafc; }
+.empty-note { color: var(--muted); font-style: italic; }
+
+/* Pangsa umur */
+.share-row {
+  display: grid;
+  grid-template-columns: 150px 1fr 64px;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+.share-label { font-weight: 600; }
+.share-track { background: #e5e7eb; border-radius: 999px; height: 16px; overflow: hidden; }
+.share-fill { height: 100%; border-radius: 999px; }
+.share-value { font-weight: 700; text-align: right; }
+
+/* Fakta */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.fact {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--amber);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.fact .f-value { font-size: 24px; font-weight: 800; color: var(--navy); }
+.fact .f-name { font-weight: 600; margin-top: 2px; }
+.fact .f-source { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+
+/* Kaki */
+.site-foot {
+  background: var(--navy);
+  color: #cbd5e1;
+  padding: 22px 0;
+  font-size: 14px;
+}
+.foot-inner { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.site-foot a { color: #fbbf24; }
+
+/* Ponsel */
+@media (max-width: 720px) {
+  .cards, .explore, .facts { grid-template-columns: 1fr; }
+  .site-title { font-size: 22px; }
+  .head-note { display: none; }
+  .page h1 { font-size: 24px; }
+  .share-row { grid-template-columns: 110px 1fr 56px; }
+  .card .k-value { font-size: 28px; }
+}
