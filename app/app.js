@@ -87,7 +87,7 @@ function renderPenduduk() {
       </div>
       <div class="table-wrap">
         <table class="data" id="prov-table">
-          <thead><tr><th>Provinsi</th><th class="num">Penduduk (juta jiwa)</th></tr></thead>
+          <thead><tr><th>Provinsi</th><th class="num">Penduduk (juta jiwa)</th><th class="num">Pangsa nasional</th></tr></thead>
           <tbody></tbody>
         </table>
         <p class="empty-note" id="prov-empty" hidden>Tidak ada provinsi yang cocok.</p>
@@ -108,8 +108,12 @@ function renderPenduduk() {
     rows = [...rows].sort((a, b) =>
       sortBy === 'name' ? a.name.localeCompare(b.name, 'id') : b.population - a.population,
     );
+    const total = SERIES.penduduk.values[SERIES.penduduk.values.length - 1];
     tbody.innerHTML = rows
-      .map((p) => `<tr><td>${p.name}</td><td class="num">${String(p.population).replace('.', ',')}</td></tr>`)
+      .map((p) => {
+        const share = ((p.population / total) * 100).toFixed(1).replace('.', ',');
+        return `<tr><td>${p.name}</td><td class="num">${String(p.population).replace('.', ',')}</td><td class="num">${share}%</td></tr>`;
+      })
       .join('');
     empty.hidden = rows.length > 0;
     sortName.setAttribute('aria-pressed', String(sortBy === 'name'));
